@@ -140,7 +140,25 @@ print(analyze_text(text))
 # {'이름': '이영희', '총점': 275, '평균': 91.66666666666667}
 # {'이름': '박민수', '총점': 203, '평균': 67.66666666666667}
 
+students = {
+    '김철수': [80, 90, 70],
+    '이영희': [95, 88, 92],
+    '박민수': [60, 75, 68]
+}
 
+def calculate_student(name, scores):
+    total = 0 # 총점
+    for score in scores:
+        total += score
+    average = total / len(scores) # 평균
+    return { # 딕셔너리 반환
+        '이름': name,
+        '총점': total,
+        '평균': average
+    }
+
+for name, scores in students.items():
+    print(calculate_student(name, scores))
 
 # ============================================================
 # 5. 가변 인수를 이용한 합계 함수
@@ -160,7 +178,15 @@ print(analyze_text(text))
 # 60
 # 15
 
+# 인수의 수에 상관없이 모든 인수를 args에 튜플 형태로 저장
+def sum_all(*args):
+    total = 0 # 합계
+    for number in args: # 튜플의 요소 수만큼 반복
+        total += number
+    return total
 
+print(sum_all(10, 20, 30))
+print(sum_all(1, 2, 3, 4, 5))
 
 # ============================================================
 # 6. 기본값 매개변수를 이용한 급여 계산 함수
@@ -181,7 +207,14 @@ print(analyze_text(text))
 # 3300000.0
 # 3600000.0
 
+# bonus_rate 파라미터에 인수가 전달되면 인수를 사용, 그렇지 않으면 0.1을 사용
+def calculate_salary(base_salary, bonus_rate=0.1):
+    final_salary = base_salary + (base_salary * bonus_rate)
+    return final_salary
 
+# 숫자 세자리마다 _ 사용 가능
+print(calculate_salary(3_000_000))
+print(calculate_salary(3_000_000, 0.2))
 
 # ============================================================
 # 7. 함수를 이용한 학생 성적 처리
@@ -212,7 +245,37 @@ print(analyze_text(text))
 # 박민수 : 76점 / C
 # 최지우 : 64점 / D
 
+students = {
+    "김철수": 85,
+    "이영희": 92,
+    "박민수": 76,
+    "최지우": 64
+}
 
+def get_grade(score):
+    if score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    elif score >= 60:
+        return "D"
+    else:
+        return "F"
+
+def make_report(students):
+    report = [] # 결과문자열 저장 리스트
+    for name, score in students.items():
+        grade = get_grade(score)
+        line = f'{name} : {score}점 / {grade}'
+        report.append(line) # 리스트에 한 줄 저장
+    return report
+
+result = make_report(students)
+
+for line in result:
+    print(line)
 
 # ============================================================
 # 8. 고차함수 - 계산 함수를 인수로 전달하기
@@ -239,7 +302,23 @@ print(analyze_text(text))
 # 5
 # 50
 
+def add(a, b):
+    return a + b
 
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+# 고차함수 : 두 인수와 콜백함수를 파라미터로
+def calculate(a, b, operation):
+    # 콜백함수에 두 인수를 전달해 처리한 결과를 리턴
+    return operation(a, b)
+
+print(calculate(10, 5, add))
+print(calculate(10, 5, subtract))
+print(calculate(10, 5, multiply))
 
 # ============================================================
 # 9. 콜백함수 - 주문 처리 완료 후 함수 호출하기
@@ -272,7 +351,19 @@ print(analyze_text(text))
 # [키보드] 주문을 처리합니다.
 # [키보드] 주문 완료 메시지를 전송했습니다.
 
+def payment_complete(order_name):
+   print(f'[{order_name}] 결제가 완료되었습니다.')
 
+def send_message(order_name):
+   print(f'[{order_name}] 주문 완료 메세지를 전송했습니다.')
+
+# 고차함수 : 주문명, 콜백함수를 파라미터로
+def process_order(order_name, callback):
+    print(f'[{order_name}] 주문을 처리합니다')
+    callback(order_name) # 콜백함수 호출
+
+process_order('노트북', payment_complete)
+process_order('키보드', send_message)
 
 # ============================================================
 # 10. 고차함수 + 콜백함수 - 점수 데이터 처리 시스템
@@ -311,5 +402,46 @@ print(analyze_text(text))
 # [출력 예]
 # 결과 : [72, 88, 91, 67, 100, 83]
 # 결과 : [91, 100]
+
+scores = [55, 72, 88, 91, 67, 100, 83]
+
+# 60이상이면 True 반환
+def is_pass(score):
+    return score >= 60
+
+# 90이상이면 True 반환
+def is_excellent(score):
+    return score >= 90
+
+# 고차함수 : 점수리스트와 콜백함수를 파라미터로
+def filter_scores(scores, condition):
+    result = [] # 조건을 만족하는 점수 저장 리스트
+    for score in scores:
+        if condition(score): # 콜백함수에 점수를 전달하고 받은 리턴값으로 분기
+            result.append(score) # 조건 만족시 리스트에 추가
+    return result
+
+# 제목과 결과 출력 함수
+def print_result(title, result):
+    print(f'{title} : {result}')
+
+# 고차함수 : 점수리스트, 점수판정콜백함수, 출력콜백함수, 제목 파라미터로
+def process_scores(scores, condition, callback, title='결과'):
+    filtered_scores = filter_scores(scores, condition) # 조건 만족 점수리스트
+    callback(title, filtered_scores) # 콜백함수를 제목과 조건 만족 점수리스트를 인수로 호출
+
+process_scores(scores, is_pass, print_result, '합격자 점수')
+process_scores(scores, is_excellent, print_result, '우수자 점수')
+
+
+
+
+
+
+
+
+
+
+
 
 

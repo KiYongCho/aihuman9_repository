@@ -17,7 +17,7 @@ def make_file(path: Path) -> bool:
     if not path.exists():
         with path.open(mode='w', encoding='utf-8') as file:
             file.write(f'# {path.name}\n')
-            file.write('# 주제:\n')
+            file.write('# ')
         return True
     return False
 

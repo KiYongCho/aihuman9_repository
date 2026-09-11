@@ -3,3 +3,6 @@
 def pp(*obj):
     print(*obj)
     print('-' * 50)
+
+def up(n):
+    print('\n' * n)

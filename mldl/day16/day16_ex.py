@@ -57,6 +57,7 @@ pp(iris_default.keys())
 pp(list(iris_default.keys()))
 
 # iris 데이터셋을 데이터프레임 형태로
+# as_frame=True : Bunch 객체 내부의 data, target, frame 등을 pandas 객체로 만듬
 iris = load_iris(as_frame=True)
 pp(iris)
 pt(iris) # <class 'sklearn.utils._bunch.Bunch'>
@@ -66,8 +67,10 @@ iris_X = iris.data
 iris_y = iris.target
 
 # type_of_target(y)
-# : y가 연속형(continuous), 이진분류(binary), 다중분류(multiclass
-#   중 어떤 형태인지 문자열로 반환
+# : y 데이터의 값과 구조를 분석하여 타깃 유형을 문자열로 반환
+#   continuous : 연속형 실수 타깃
+#   binary     : 2개의 이산 클래스
+#   multiclass : 3개 이상의 이산 클래스
 
 # 회귀
 regression_target = df['최종점수'].astype(float)
@@ -142,6 +145,108 @@ pp(reg_model.feature_names_in_)
 reg_pred = reg_model.predict(X.iloc[[0, 1]])
 pp(reg_pred) # 모델 예측 결과
 pp(y.mean()) # 평균
+
+# DummyClassifier : 다른 분류모델과 비교하기 위해서 기준을 스스로 정하는 더미 분류 모델
+
+clf_X = df[FEATURES]
+clf_y = df['합격여부']
+
+# y에서 가장 많이 등장한 클래스를 예측하는 더미 분류 모델
+clf_model = DummyClassifier(strategy='most_frequent')
+
+pp(clf_model.get_params())
+
+clf_model.fit(clf_X, clf_y)
+
+pp(clf_model.n_features_in_)
+pp(clf_model.feature_names_in_)
+
+# 패쳐의 3개 행을 부여해서 분류 예측 결과 저장
+clf_pred = clf_model.predict(clf_X.iloc[[0, 1, 2]])
+pp(clf_pred) # [1, 1, 1] : 가장 많이 등장한 클래스로 예측
+
+pp(clf_y.value_counts()) # 1이 8, 0이 4 => most_frequent에서는 1이 정답
+
+# 새로운 입력 패쳐
+new_X = pd.DataFrame(
+    [[7.5, 91, 6]],
+    columns = FEATURES
+)
+pp(new_X)
+
+pp(clf_X.columns.tolist()) # 학습 컬럼 리스트
+pp(new_X.columns.tolist()) # 예측을 위한 추론 컬럼 리스트
+
+# 새로운 패쳐를 입력해서 예측 결과 생성
+new_pred = clf_model.predict(new_X)
+pp(new_pred) # [1]
+
+# DummyClassifier에서는 에러를 발생시키지 않음
+# 원래 패쳐의 컬럼 순서를 변경
+wrong_order_X = new_X[['출석률', '공부시간', '실습횟수']]
+try:
+    clf_model.predict(wrong_order_X)
+except ValueError as e:
+    pp('추론 Feature 순서 불일치 오류: ', e)
+
+# DummyClassifier에서는 에러를 발생시키지 않음
+# 패쳐를 1차원으로 생성
+one_dim_X = df['공부시간'] # 패쳐를 2차원이 아닌 1차원으로 생성
+try:
+    clf_model.predict(one_dim_X)
+except ValueError as e:
+    pp('1차원 X 오류: ', e)
+
+# 회귀, 분류, 군집 문제 구분용 간단한 데이터
+
+# 회귀 X
+regression_example_X = pd.DataFrame({
+    '면적': [59, 84, 101],
+    '층수': [3, 8, 12],
+    '건축연수': [15, 7, 2]
+})
+
+# 회귀 y
+regression_example_y = pd.Series(
+    # [52000.0, 73500.0, 875000.0], # 정수로 변경될 수 있으면 분류(multiclass)로 봄
+    [52000.5, 73500.5, 875000.5], # 정수로 변경될 수 없으면 회귀(continuous)로 봄
+    name='매매가'
+)
+
+# 분류 X
+classification_example_X = pd.DataFrame({
+    '사용시간': [120, 300, 80],
+    '오류횟수': [1, 7, 0],
+    '온도': [45, 78, 40]
+})
+
+# 분류 y
+classification_example_y = pd.Series(
+    [0, 1, 0],
+    name='고장여부'
+)
+
+# 군집 X
+clustering_example_X = pd.DataFrame({
+    '구매금액': [100000, 450000, 90000],
+    '방문횟수': [2, 12, 3],
+    '최근구매일': [30, 3, 21]
+})
+
+pp('회귀 y 유형: ', type_of_target(regression_example_y)) # multiclass or continuous
+pp('분류 y 유형: ', type_of_target(classification_example_y)) # binary
+pp('군집 X shape: ', clustering_example_X.shape) # (3, 3)
+
+up(5)
+
+
+
+
+
+
+
+
+
 
 
 

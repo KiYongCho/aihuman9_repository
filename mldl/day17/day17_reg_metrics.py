@@ -1,4 +1,4 @@
-# day17_regression_metrics.py
+# day17_reg_metrics.py
 # 회귀 성능지표 MAE, MSE, RMSE, R^2
 
 '''

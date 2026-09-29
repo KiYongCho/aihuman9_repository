@@ -16,8 +16,8 @@ def make_directory(path: Path) -> bool:
 def make_file(path: Path) -> bool:
     if not path.exists():
         with path.open(mode='w', encoding='utf-8') as file:
-            file.write(f'# {path.name}\n')
-            file.write('# ')
+            file.write(f'# {path.name}')
+            file.write('\n\n\n\nup(5)')
         return True
     return False
 

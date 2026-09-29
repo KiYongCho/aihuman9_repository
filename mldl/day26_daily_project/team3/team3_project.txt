@@ -1,0 +1,59 @@
+﻿AI휴먼 데일리 딥러닝 미니프로젝트 - Team 3
+=======================================================
+
+[프로젝트]
+제품 표면 패턴 판별
+
+[문제 유형]
+이진 분류
+
+[핵심 모델]
+CNN
+
+[프로젝트 설명]
+16×16 흑백 합성 이미지에서 가로/세로 패턴을 CNN으로 분류합니다.
+
+[이번 프로젝트에서 반드시 확인할 개념]
+- 4차원 이미지 shape 확인
+- Conv2D → MaxPooling2D → Flatten 흐름 확인
+- filters와 feature map의 관계 이해
+- Sigmoid + binary_crossentropy 사용
+- EarlyStopping 및 학습곡선 시각화
+
+[데이터]
+- 파일명: team3_data.npz
+- 수업용으로 생성한 가상 데이터입니다.
+- 실제 개인정보나 민감 데이터를 포함하지 않습니다.
+- 외부 다운로드 없이 바로 실습할 수 있습니다.
+
+[필수 작업]
+1. np.load()로 X와 y를 읽고 shape를 출력합니다.
+2. X가 (samples, 16, 16, 1) 형태인지 확인합니다.
+3. 샘플 이미지 8장을 시각화하여 두 클래스의 차이를 확인합니다.
+4. Conv2D(16) → MaxPooling2D → Conv2D(32) → MaxPooling2D 구조를 구성합니다.
+5. Flatten 뒤에 Dense 은닉층과 Sigmoid 출력층을 연결합니다.
+6. model.summary()로 각 층의 출력 shape를 확인합니다.
+7. Adam + binary_crossentropy로 학습합니다.
+8. Dropout과 EarlyStopping을 적용합니다.
+9. train/validation loss와 accuracy 곡선을 그립니다.
+10. 테스트 정확도와 혼동행렬을 확인합니다.
+
+[보고서]
+`team3_report_template.md` 파일을 복사하여 결과를 작성하세요.
+
+[필수 시각화]
+- 학습곡선: train loss / validation loss
+- 문제 유형에 맞는 성능 시각화
+- 데이터 또는 예측 결과를 설명할 수 있는 그래프 1개 이상
+
+[시간이 부족할 때]
+1순위: 데이터 shape 이해
+2순위: 모델 구성과 학습
+3순위: EarlyStopping + History 확인
+4순위: 최종 성능과 그래프
+5순위: 보고서 결론 작성
+
+[주의]
+- Test Set을 반복적으로 보면서 모델을 수정하지 않습니다.
+- StandardScaler를 사용할 때는 Training Set에만 fit합니다.
+- 모델 이름보다 데이터 shape와 문제 유형에 맞는 구조를 선택하는 것이 중요합니다.

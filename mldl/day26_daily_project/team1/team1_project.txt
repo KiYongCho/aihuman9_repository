@@ -1,0 +1,59 @@
+﻿AI휴먼 데일리 딥러닝 미니프로젝트 - Team 1
+=======================================================
+
+[프로젝트]
+회원 재방문 예측
+
+[문제 유형]
+이진 분류
+
+[핵심 모델]
+Dense
+
+[프로젝트 설명]
+일반 표형 고객 데이터를 Dense 신경망으로 학습하고 Dropout과 EarlyStopping을 적용합니다.
+
+[이번 프로젝트에서 반드시 확인할 개념]
+- Input(shape=(특성수,))와 Dense 구조 설계
+- ReLU 은닉층과 Sigmoid 출력층 연결
+- binary_crossentropy 사용
+- Dropout 적용 전후 학습곡선 비교
+- EarlyStopping과 History를 이용한 과적합 점검
+
+[데이터]
+- 파일명: team1_data.csv
+- 수업용으로 생성한 가상 데이터입니다.
+- 실제 개인정보나 민감 데이터를 포함하지 않습니다.
+- 외부 다운로드 없이 바로 실습할 수 있습니다.
+
+[필수 작업]
+1. CSV를 pandas DataFrame으로 읽고 데이터 크기, 자료형, 결측치를 확인합니다.
+2. 결측치는 숫자형 컬럼의 중앙값으로 처리합니다.
+3. X와 y를 분리한 후 Train/Test 데이터를 75:25로 나눕니다.
+4. StandardScaler는 Training Set에 fit하고 Test Set에는 transform만 적용합니다.
+5. 기본 Dense 모델을 구성합니다.
+6. 같은 구조에 Dropout(0.3)을 추가한 모델을 하나 더 구성합니다.
+7. 두 모델 모두 Adam, binary_crossentropy, accuracy를 사용합니다.
+8. EarlyStopping(monitor="val_loss", patience=10, restore_best_weights=True)을 적용합니다.
+9. 두 모델의 val_loss와 val_accuracy를 비교합니다.
+10. 최종 모델의 혼동행렬을 시각화합니다.
+
+[보고서]
+`team1_report_template.md` 파일을 복사하여 결과를 작성하세요.
+
+[필수 시각화]
+- 학습곡선: train loss / validation loss
+- 문제 유형에 맞는 성능 시각화
+- 데이터 또는 예측 결과를 설명할 수 있는 그래프 1개 이상
+
+[시간이 부족할 때]
+1순위: 데이터 shape 이해
+2순위: 모델 구성과 학습
+3순위: EarlyStopping + History 확인
+4순위: 최종 성능과 그래프
+5순위: 보고서 결론 작성
+
+[주의]
+- Test Set을 반복적으로 보면서 모델을 수정하지 않습니다.
+- StandardScaler를 사용할 때는 Training Set에만 fit합니다.
+- 모델 이름보다 데이터 shape와 문제 유형에 맞는 구조를 선택하는 것이 중요합니다.

@@ -1,9 +1,10 @@
 # make_daily_folder&file.py
-# 학습 일차를 입력하면 일차에 필요한 폴더와 파일 생성
+# - 학습 일차를 입력하면 일차에 필요한 폴더와 파일 생성
+# - 과정명은 과정 변경시 수정 필요
 
 from pathlib import Path
 
-SUBJECT_NAME = 'mldl' # 과정명
+SUBJECT_NAME = 'webservice' # 과정명
 
 # 폴더 생성 함수
 def make_directory(path: Path) -> bool:

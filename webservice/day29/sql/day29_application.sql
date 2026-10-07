@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS jobs (
+    id SERIAL PRIMARY KEY,
+    company VARCHAR(80) NOT NULL,
+    position VARCHAR(80) NOT NULL,
+    location VARCHAR(50) NOT NULL,
+    salary INTEGER NOT NULL,
+    status VARCHAR(20) NOT NULL
+)

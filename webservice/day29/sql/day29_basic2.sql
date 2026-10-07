@@ -1,0 +1,2 @@
+-- 전체 데이터 삭제하고 자동증가번호 재시작
+TRUNCATE TABLE BOOKS RESTART IDENTITY

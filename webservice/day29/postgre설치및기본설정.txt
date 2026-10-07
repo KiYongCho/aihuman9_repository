@@ -1,0 +1,80 @@
+[PostgreSQL 설치 및 기본 설정]
+
+------------------------------------------------------------------------------------------------
+
+0. 설치 및 설치 확인
+
+1) PostgreSQL 서버 다운로드 및 설치
+https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+
+2) 설치확인
+CMD > psql --version
+
+------------------------------------------------------------------------------------------------
+
+1. 비밀번호 없이 설치되었을 때 postgres 비밀번호 설정
+
+1) pg_hba.conf 파일 열기 (기본 경로 예시 : C:\PostgreSQL\18\data\pg_hba.conf)
+
+2) 아래 내용을 잠시 trust로 변경
+host    all    all    127.0.0.1/32    trust
+host    all    all    ::1/128         trust
+
+3) PostgreSQL 서비스 재시작
+CMD > net stop postgresql-x64-18
+CMD > net start postgresql-x64-18
+
+4) postgres 계정으로 접속
+CMD > psql -U postgres
+
+5) 비밀번호 설정
+CMD > ALTER USER postgres WITH PASSWORD '새비밀번호';
+
+6) pg_hba.conf 원상복구
+host    all    all    127.0.0.1/32    scram-sha-256
+host    all    all    ::1/128         scram-sha-256
+
+7) PostgreSQL 서비스 다시 재시작
+net stop postgresql-x64-18
+net start postgresql-x64-18
+
+------------------------------------------------------------------------------------------------
+
+2. 새로운 데이터베이스와 사용자 생성
+
+1) postgres 계정으로 접속
+CMD > psql -U postgres
+
+2) 사용자 생성
+CREATE USER 계정명 WITH PASSWORD '비밀번호';
+
+3) 데이터베이스 생성 및 소유자 지정
+CREATE DATABASE 데이터베이스명 OWNER 계정명;
+
+4) 유용한 명령
+\du : 사용자 확인 명령
+\l : 데이터베이스 확인 명령
+\q : 종료 명령
+
+------------------------------------------------------------------------------------------------
+
+3. DBeaver에서 PostgreSQL 접속
+
+1) DBeaver 다운로드 및 설치
+https://dbeaver.io/download/
+
+2) DBeaver 실행 후 메뉴에서 다음 선택
+Database → New Database Connection → PostgreSQL
+
+3) 연결 정보 입력
+Host     : localhost
+Port     : 5432
+Database : 데이터베이스명
+Username : 계정명
+Password : 비밀번호
+
+4) Test Connection 클릭
+
+5) 연결 성공 확인 후 Finish 클릭
+
+------------------------------------------------------------------------------------------------

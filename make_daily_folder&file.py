@@ -4,7 +4,7 @@
 
 from pathlib import Path
 
-SUBJECT_NAME = 'webservice' # 과정명
+SUBJECT_NAME = 'ttsstt' # 과정명
 
 # 폴더 생성 함수
 def make_directory(path: Path) -> bool:

@@ -1,0 +1,5 @@
+﻿filename,original_sec,original_sr,channels,final_sec,final_sr,action,status
+interview_10s.wav,10.0,44100,1,12.0,16000,pad,ok
+interview_12s.wav,12.0,44100,1,12.0,16000,keep,ok
+interview_15s.wav,15.0,44100,1,12.0,16000,crop,ok
+interview_30s.wav,32.23,48000,1,12.0,16000,crop,ok

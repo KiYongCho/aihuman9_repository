@@ -1,0 +1,9 @@
+﻿clip_id,language,voice,pitch,seconds
+museum_ko_1_1.mp3,ko,ko-KR-SunHiNeural,+0Hz,4.39
+museum_ko_1_2.mp3,ko,ko-KR-SunHiNeural,+20Hz,4.39
+museum_ko_2_1.mp3,ko,ko-KR-InJoonNeural,+0Hz,4.9
+museum_ko_2_2.mp3,ko,ko-KR-InJoonNeural,+20Hz,4.9
+museum_en_1_1.mp3,en,en-US-AriaNeural,+0Hz,3.41
+museum_en_1_2.mp3,en,en-US-AriaNeural,+20Hz,3.41
+museum_en_2_1.mp3,en,en-US-GuyNeural,+0Hz,3.48
+museum_en_2_2.mp3,en,en-US-GuyNeural,+20Hz,3.48

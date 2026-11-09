@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI휴먼 랜덤 팀 배정</title>
+  <style>
+    :root{font-family:'Pretendard','Malgun Gothic',system-ui,sans-serif;color:#eaf0ff;background:#101527}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 0%,#253d6b 0%,#101527 46%);padding:40px 18px}
+    main{max-width:1000px;margin:auto}
+    header{text-align:center;margin-bottom:30px}
+    .eyebrow{color:#9fbfff;letter-spacing:.14em;font-size:13px;font-weight:800}
+    h1{margin:10px 0;font-size:clamp(28px,5vw,43px)}
+    .desc{color:#afbdd8;line-height:1.8}
+    .rules{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:24px 0}
+    .rule{border:1px solid #435274;border-radius:999px;padding:9px 16px;color:#d8e4ff;background:#1c2945}
+    .controls{display:flex;justify-content:center;gap:12px;margin:25px 0 32px;flex-wrap:wrap}
+    button{border:0;cursor:pointer;font-size:17px;font-weight:800;padding:15px 30px;border-radius:14px;transition:transform .15s,opacity .15s}
+    button:hover{transform:translateY(-2px)}button:active{transform:translateY(1px)}
+    #assign{background:linear-gradient(100deg,#72a6ff,#a48dff);color:#12182d;box-shadow:0 8px 28px #3b65bd55}
+    #reset{background:#2a344d;color:#e7efff;border:1px solid #465471}
+    button:disabled{opacity:.5;cursor:not-allowed;transform:none}
+    .countdown-panel{display:none;text-align:center;margin:0 auto 28px;padding:26px 20px;max-width:540px;border:1px solid #6c85c1;border-radius:22px;background:#202e51;box-shadow:0 16px 40px #04071677}
+    .countdown-panel.active{display:block}
+    .countdown-number{font-size:clamp(90px,17vw,160px);font-weight:900;line-height:1.12;color:#ffd477;text-shadow:0 0 30px #ffc76c88;animation:pulse .7s ease-in-out infinite alternate;font-variant-numeric:tabular-nums}
+    .countdown-caption{color:#d5e0fc;font-size:19px;font-weight:700;margin:8px 0}
+    .countdown-track{height:9px;background:#344363;border-radius:99px;overflow:hidden;margin-top:24px}
+    .countdown-progress{height:100%;width:100%;background:linear-gradient(90deg,#69d8e1,#ffd477);transition:width .25s ease}
+    @keyframes pulse{to{transform:scale(1.07);filter:brightness(1.25)}}
+    .teams{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .team{background:#1b2540;border:1px solid #394b74;border-radius:22px;padding:26px;min-height:350px;box-shadow:0 18px 38px #090d1f50}
+    .team:nth-child(2){border-color:#594875}
+    .team-header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+    .team h2{font-size:25px;margin:0}.count{font-size:13px;color:#c9d8ff;background:#2e3c5d;border-radius:99px;padding:7px 12px}
+    .members{display:grid;gap:11px}
+    .member{display:flex;justify-content:space-between;align-items:center;background:#283553;border-radius:13px;padding:14px 16px;font-size:19px;font-weight:700;animation:appear .35s both}
+    .member small{font-size:12px;padding:6px 9px;border-radius:99px;font-weight:700}
+    .online{background:#123f49;color:#65e6d9}.offline{background:#4a384f;color:#e8b4fc}
+    .placeholder{color:#8d9bb7;text-align:center;padding:80px 10px;line-height:1.8}
+    .status{text-align:center;min-height:23px;margin:20px 0;color:#aabce2;font-size:14px}
+    .note{text-align:center;color:#8899b8;font-size:13px;line-height:1.8}
+    @keyframes appear{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:660px){body{padding:25px 13px}.teams{grid-template-columns:1fr}.team{min-height:260px;padding:20px}.placeholder{padding:45px 10px}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">AI HUMAN · TEAM MATCHING</div>
+    <h1>랜덤 팀 배정</h1>
+    <p class="desc">총 10명의 수강생을 조건에 맞춰 5명씩 자동 배정합니다.<br>버튼을 누르면 효과음과 함께 10초를 센 뒤 결과가 공개됩니다.</p>
+    <div class="rules">
+      <span class="rule">1팀 · 온라인 2명 + 오프라인 3명</span>
+      <span class="rule">2팀 · 온라인 1명 + 오프라인 4명</span>
+    </div>
+  </header>
+  <div class="controls">
+    <button id="assign" type="button">🎲 랜덤 팀 배정</button>
+    <button id="reset" type="button">초기화</button>
+  </div>
+  <section id="countdownPanel" class="countdown-panel" aria-live="off" aria-label="팀 배정 카운트다운">
+    <div class="countdown-caption">두근두근! 팀 배정까지</div>
+    <div id="countdownNumber" class="countdown-number">10</div>
+    <div id="countdownMessage" class="countdown-caption">잠시 후 결과가 공개됩니다!</div>
+    <div class="countdown-track"><div id="countdownProgress" class="countdown-progress"></div></div>
+  </section>
+  <section class="teams" aria-live="polite">
+    <article class="team"><div class="team-header"><h2>1팀</h2><span class="count">5명</span></div><div id="team1" class="members"><div class="placeholder">버튼을 눌러<br>팀을 배정해 주세요.</div></div></article>
+    <article class="team"><div class="team-header"><h2>2팀</h2><span class="count">5명</span></div><div id="team2" class="members"><div class="placeholder">버튼을 눌러<br>팀을 배정해 주세요.</div></div></article>
+  </section>
+  <div id="status" class="status" role="status">아직 배정되지 않았습니다.</div>
+  <p class="note">온라인: 문윤성 · 정유아 · 최지연<br>오프라인: 신의진 · 성수경 · 최준혁 · 엄기훈 · 박세정 · 이태규 · 이승우</p>
+</main>
+<script>
+  'use strict';
+  // 온라인 수강생 3명
+  const onlineStudents = ['문윤성', '정유아', '최지연'];
+  // 오프라인 수강생 7명
+  const offlineStudents = ['신의진', '성수경', '최준혁', '엄기훈', '박세정', '이태규', '이승우'];
+
+  // Fisher–Yates 셔플: 원본 배열은 변경하지 않고 새 배열을 무작위로 섞습니다.
+  function shuffle(students) {
+    const result = [...students];
+    for (let i = result.length - 1; i > 0; i--) {
+      const randomValues = new Uint32Array(1);
+      crypto.getRandomValues(randomValues);
+      const j = randomValues[0] % (i + 1);
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
+  }
+
+  // 팀 결과를 출력할 때 innerHTML에 사용자 이름을 삽입하지 않고 DOM을 안전하게 구성합니다.
+  function renderTeam(elementId, students) {
+    const root = document.getElementById(elementId);
+    root.replaceChildren();
+    students.forEach((student, index) => {
+      const item = document.createElement('div');
+      item.className = 'member';
+      item.style.animationDelay = `${index * 60}ms`;
+      const name = document.createElement('span');
+      name.textContent = student.name;
+      const type = document.createElement('small');
+      type.className = student.mode === '온라인' ? 'online' : 'offline';
+      type.textContent = student.mode;
+      item.append(name, type);
+      root.appendChild(item);
+    });
+  }
+
+  // Web Audio API: 외부 오디오 파일 없이 브라우저에서 효과음을 직접 생성합니다.
+  let audioContext = null;
+  let countdownTimer = null;
+  let finishTimer = null;
+  let running = false;
+
+  // 클릭 이벤트 내에서 AudioContext를 활성화하면 브라우저 자동재생 제한을 피할 수 있습니다.
+  function initializeAudio() {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return;
+    try {
+      if (!audioContext) audioContext = new AudioContextClass();
+      if (audioContext.state === 'suspended') audioContext.resume().catch(() => {});
+    } catch (error) {
+      console.warn('효과음을 재생할 수 없습니다:', error);
+    }
+  }
+
+  // 주파수(Hz), 길이(초), 볼륨을 지정하여 짧은 비프음을 재생합니다.
+  function playTone(frequency, duration = 0.13, volume = 0.12, delay = 0, waveform = 'sine') {
+    if (!audioContext || audioContext.state !== 'running') return;
+    const start = audioContext.currentTime + delay;
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    oscillator.type = waveform;
+    oscillator.frequency.setValueAtTime(frequency, start);
+    gain.gain.setValueAtTime(0.0001, start);
+    gain.gain.exponentialRampToValueAtTime(volume, start + 0.012);
+    gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+    oscillator.start(start);
+    oscillator.stop(start + duration + 0.02);
+  }
+
+  // 남은 시간이 3초 이하이면 조금 높은 음으로 긴박감을 표현합니다.
+  function playTick(secondsLeft) {
+    playTone(secondsLeft <= 3 ? 880 : 540, secondsLeft <= 3 ? 0.20 : 0.11, 0.13, 0, 'triangle');
+    if (secondsLeft <= 3) playTone(1100, 0.09, 0.07, 0.14, 'sine');
+  }
+
+  // 배정 완료 시 상승하는 4개의 음을 연주합니다.
+  function playSuccess() {
+    [523.25, 659.25, 783.99, 1046.5].forEach((frequency, index) => {
+      playTone(frequency, 0.27, 0.16, index * 0.14, 'triangle');
+    });
+    playTone(1318.5, 0.6, 0.09, 0.6, 'sine');
+  }
+
+  // 카운트다운 진행 중에는 재클릭을 차단하고 기존 결과를 숨깁니다.
+  function startCountdown() {
+    if (running) return;
+    running = true;
+    initializeAudio();
+    document.getElementById('assign').disabled = true;
+    document.getElementById('assign').textContent = '⏳ 배정 중...';
+    const panel = document.getElementById('countdownPanel');
+    const number = document.getElementById('countdownNumber');
+    const progress = document.getElementById('countdownProgress');
+    const message = document.getElementById('countdownMessage');
+    panel.classList.add('active');
+    document.querySelector('.teams').style.visibility = 'hidden';
+    document.getElementById('status').textContent = '팀원을 랜덤으로 섞는 중입니다...';
+    let remaining = 10;
+    number.textContent = String(remaining);
+    progress.style.width = '100%';
+    message.textContent = '잠시 후 결과가 공개됩니다!';
+    playTick(remaining);
+
+    countdownTimer = setInterval(() => {
+      remaining -= 1;
+      if (remaining >= 1) {
+        number.textContent = String(remaining);
+        progress.style.width = `${remaining * 10}%`;
+        message.textContent = remaining <= 3 ? '곧 팀이 공개됩니다!' : '팀원을 섞고 있습니다...';
+        playTick(remaining);
+      } else {
+        clearInterval(countdownTimer);
+        countdownTimer = null;
+        number.textContent = '🎉';
+        progress.style.width = '0%';
+        message.textContent = '팀 배정 완료!';
+        playSuccess();
+        assignTeams();
+        document.querySelector('.teams').style.visibility = 'visible';
+        finishTimer = setTimeout(() => {
+          panel.classList.remove('active');
+          document.getElementById('assign').disabled = false;
+          document.getElementById('assign').textContent = '🎲 다시 랜덤 팀 배정';
+          running = false;
+          finishTimer = null;
+        }, 1100);
+      }
+    }, 1000);
+  }
+
+  // 1팀 = 온라인 2명 + 오프라인 3명 / 2팀 = 온라인 1명 + 오프라인 4명
+  function assignTeams() {
+    const online = shuffle(onlineStudents);
+    const offline = shuffle(offlineStudents);
+    const firstTeam = [
+      ...online.slice(0, 2).map(name => ({ name, mode: '온라인' })),
+      ...offline.slice(0, 3).map(name => ({ name, mode: '오프라인' }))
+    ];
+    const secondTeam = [
+      ...online.slice(2).map(name => ({ name, mode: '온라인' })),
+      ...offline.slice(3).map(name => ({ name, mode: '오프라인' }))
+    ];
+    renderTeam('team1', shuffle(firstTeam));
+    renderTeam('team2', shuffle(secondTeam));
+    document.getElementById('status').textContent = `배정 완료 · ${new Date().toLocaleString('ko-KR')} · 각 팀 5명`;
+  }
+
+  // 초기화 버튼: 이전 결과를 지우고 안내 문구를 다시 표시합니다.
+  function resetTeams() {
+    // 카운트다운 도중 초기화를 눌러도 안전하게 중단합니다.
+    if (countdownTimer !== null) clearInterval(countdownTimer);
+    if (finishTimer !== null) clearTimeout(finishTimer);
+    countdownTimer = null;
+    finishTimer = null;
+    running = false;
+    document.getElementById('countdownPanel').classList.remove('active');
+    document.querySelector('.teams').style.visibility = 'visible';
+    document.getElementById('assign').disabled = false;
+    document.getElementById('assign').textContent = '🎲 랜덤 팀 배정';
+    for (const id of ['team1', 'team2']) {
+      const message = document.createElement('div');
+      message.className = 'placeholder';
+      message.textContent = '버튼을 눌러 팀을 배정해 주세요.';
+      document.getElementById(id).replaceChildren(message);
+    }
+    document.getElementById('status').textContent = '아직 배정되지 않았습니다.';
+  }
+  document.getElementById('assign').addEventListener('click', startCountdown);
+  document.getElementById('reset').addEventListener('click', resetTeams);
+</script>
+</body>
+</html>

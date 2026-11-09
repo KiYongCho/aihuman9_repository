@@ -1,0 +1,26 @@
+﻿request_no,penalty,answer,new_tokens,seconds,repeat_rate
+1,1.0,"Hi [Customer's Name],
+
+I hope you're doing well. I wanted to touch base with you about the recent delivery of your package. It arrived five days late, which is a bit concerning given our usual delivery times. I’d like to discuss this further and see if there are",60,2.31,0.062
+1,1.1,"Hi [Customer's Name],
+
+I hope you're doing well! I wanted to touch base with you about the recent delivery of your package. It seems like it took a bit longer than we initially planned, so I was wondering if everything is on track? Could you please let me know how",60,2.716,0.08
+1,1.3,"Hi [Customer's Name],
+Thank you so much for your inquiry about the delivery time of your package? I'm sure it was due in just one day or less to ensure our service is adequate during this period... If there were any issues with shipping on Tuesday evening at 10:4",60,2.276,0.02
+2,1.0,"""We apologize for the inconvenience and will take immediate action to rectify the situation. If you have any questions or concerns regarding the refund, please do not hesitate to contact us at [your email]. We appreciate your patience and understanding.""",47,1.913,0.1
+2,1.1,"""We apologize for the inconvenience caused by this issue. We'll get back to you as soon as possible with our next steps.""
+
+The message is brief but clear, conveying that you understand the customer's concerns and will provide them with further information on how they can resolve the issue. It also",60,2.396,0.137
+2,1.3,"""We apologize sincerely if you have lost something or damage your purchase from our website due to the warranty provided in this response."" This is an example of how we would respond as a friendly service agent: 
+
+**Customer Response:**
+  ""Thank You! We apologise that your order has been cancelled",60,2.336,0.061
+3,1.0,"Hi [Customer],
+
+I hope you're doing well! I'm here to help you with any issues or concerns you might have about our shipment tracking service. I'm a friendly AI that can assist you with everything from simple questions to more complex troubleshooting.
+
+I understand that you might not",60,2.708,0.188
+3,1.1,"Hi [Customer],
+
+I hope you're doing well! I'm here to help with your shipment tracking issue. It seems that the shipping update hasn't been sent yet. Could you please let me know what time you expect it to be delivered? If there's anything else I can assist you",60,2.391,0.104
+3,1.3,"Hi [Customer], I hope you're doing well! My name is Alex Thompson from the company we work with here at [Holding Company]. We've been noticing that our shipping policies have slightly changed since my last message to you – specifically, they no longer require us to update all shipments every week",60,2.587,0.039

@@ -1,0 +1,26 @@
+﻿setting,response,new_tokens,seconds
+top_k_10,"Here's a one-day walking itinerary in Kyoto in three concise English sentences:
+
+Day 1:
+- Arrive in Kyoto at 8 AM
+- Walk to the Philosopher's Path, a scenic walk in the Arashiyama Garden, to the nearby Shinjuku Gyoen National Garden
+- Take a stroll through the gardens, and end",75,2.802
+top_k_50,"Here's a one-day walking itinerary in Kyoto in three concise English sentences:
+
+Day 1:
+- Arrive in Kyoto at 8 AM
+- Walk to the Philosopher's Path, a scenic walk in the Arashiyama Bush Park
+- Take a stroll through the Arashiyama Forest
+- Visit the Kiyomizu",75,3.193
+top_p_075,"Here's a one-day walking itinerary in Kyoto in three concise English sentences:
+
+Day 1:
+- Arrive in Kyoto at 8 am
+- Spend the first half of the day exploring the city's main attractions, such as the Fushimi Inari Shrine, Kinkaku-ji Temple, and Arashiyama Bamboo Grove",75,3.693
+top_p_095,"Here's a one-day walking itinerary in Kyoto in three concise English sentences:
+
+Day 1:
+- Arrive in Kyoto at 8 AM
+- Walk to the Philosopher's Path, a scenic walk in the Arashiyama Bush Park
+- Take a stroll through the Arashiyama Forest
+- Visit the Kiyomizu",75,3.067

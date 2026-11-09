@@ -1,0 +1,10 @@
+{
+  "total": 11,
+  "accepted": 9,
+  "rejected": 2,
+  "category_counts": {
+    "수업": 3,
+    "장학": 3,
+    "시설": 3
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "mission": "email",
+    "version": "v2",
+    "model": "gpt-4.1-mini",
+    "created_utc": "2026-11-11T03:44:09.081484+00:00",
+    "score": 25.0,
+    "errors": "OK",
+    "seconds": 1.64,
+    "input_tokens": 180,
+    "output_tokens": 93,
+    "response_text": "{\n  \"category\": \"배송\",\n  \"priority\": \"high\",\n  \"reply\": \"안녕하세요 고객님, 배송 예정일이 지났음에도 불구하고 운송장 조회가 되지 않아 불편을 끼쳐드려 죄송합니다. 고객님의 주문 정보를 확인 후 빠르게 배송 상황을 안내드리겠습니다. 조금만 기다려 주시면 감사하겠습니다.\",\n  \"needs_human\": true\n}"
+  },
+  "parsed": {
+    "category": "배송",
+    "priority": "high",
+    "reply": "안녕하세요 고객님, 배송 예정일이 지났음에도 불구하고 운송장 조회가 되지 않아 불편을 끼쳐드려 죄송합니다. 고객님의 주문 정보를 확인 후 빠르게 배송 상황을 안내드리겠습니다. 조금만 기다려 주시면 감사하겠습니다.",
+    "needs_human": true
+  },
+  "reference": null
+}

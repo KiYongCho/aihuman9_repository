@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "mission": "email",
+    "version": "v1",
+    "model": "gpt-4.1-mini",
+    "created_utc": "2026-11-11T03:44:07.445542+00:00",
+    "score": 0,
+    "errors": "MISSING:category;MISSING:needs_human;MISSING:priority;MISSING:reply;잘못된 카테고리;잘못된 우선순위;잘못된 needs_human",
+    "seconds": 1.57,
+    "input_tokens": 121,
+    "output_tokens": 79,
+    "response_text": "{\n  \"E01\": {\n    \"response\": \"안녕하세요 고객님, 배송 예정일이 지났음에도 불구하고 운송장 조회가 되지 않아 불편을 드려 죄송합니다. 현재 배송 상황을 확인 중이며, 최대한 빨리 안내드리겠습니다. 조금만 더 기다려 주시기 바랍니다. 감사합니다.\"\n  }\n}"
+  },
+  "parsed": {
+    "E01": {
+      "response": "안녕하세요 고객님, 배송 예정일이 지났음에도 불구하고 운송장 조회가 되지 않아 불편을 드려 죄송합니다. 현재 배송 상황을 확인 중이며, 최대한 빨리 안내드리겠습니다. 조금만 더 기다려 주시기 바랍니다. 감사합니다."
+    }
+  },
+  "reference": null
+}

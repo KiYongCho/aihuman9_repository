@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "mission": "meeting",
+    "version": "v2",
+    "model": "gpt-4.1-mini",
+    "created_utc": "2026-11-12T07:40:34.195854+00:00",
+    "score": 100.0,
+    "errors": "OK",
+    "seconds": 3.4,
+    "input_tokens": 288,
+    "output_tokens": 83,
+    "response_text": "{\"decisions\":[\"신규 안내 페이지는 다음 주 금요일 공개로 결정됨.\"],\"tasks\":[{\"owner\":\"김대리\",\"task\":\"신규 안내 페이지 문구 검수\",\"due\":\"미정\"},{\"owner\":\"박주임\",\"task\":\"통계 페이지 오류 확인\",\"due\":\"다음 주 수요일\"}],\"risks\":[\"통계 페이지 오류 복구 기한 미정\"]}"
+  },
+  "parsed": {
+    "decisions": [
+      "신규 안내 페이지는 다음 주 금요일 공개로 결정됨."
+    ],
+    "tasks": [
+      {
+        "owner": "김대리",
+        "task": "신규 안내 페이지 문구 검수",
+        "due": "미정"
+      },
+      {
+        "owner": "박주임",
+        "task": "통계 페이지 오류 확인",
+        "due": "다음 주 수요일"
+      }
+    ],
+    "risks": [
+      "통계 페이지 오류 복구 기한 미정"
+    ]
+  },
+  "reference": null
+}

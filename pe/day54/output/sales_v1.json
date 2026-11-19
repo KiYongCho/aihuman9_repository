@@ -1,0 +1,111 @@
+{
+  "metadata": {
+    "mission": "sales",
+    "version": "v1",
+    "model": "gpt-4.1-mini",
+    "created_utc": "2026-11-11T03:44:24.462477+00:00",
+    "score": 0,
+    "errors": "MISSING:best_month;MISSING:insights;MISSING:total_revenue;MISSING:worst_month;잘못된 total_revenue",
+    "seconds": 5.52,
+    "input_tokens": 302,
+    "output_tokens": 573,
+    "response_text": "{\n  \"report\": {\n    \"summary\": {\n      \"total_sales\": 185900000,\n      \"total_orders\": 3564,\n      \"average_sales_per_month\": 15491666.67,\n      \"average_orders_per_month\": 297,\n      \"peak_sales_month\": \"2026-12\",\n      \"peak_sales_amount\": 23900000,\n      \"peak_orders_month\": \"2026-12\",\n      \"peak_orders_count\": 427,\n      \"lowest_sales_month\": \"2026-01\",\n      \"lowest_sales_amount\": 12000000,\n      \"lowest_orders_month\": \"2026-01\",\n      \"lowest_orders_count\": 214\n    },\n    \"monthly_performance\": [\n      {\"month\": \"2026-01\", \"sales\": 12000000, \"orders\": 214, \"avg_order_value\": 55981.31},\n      {\"month\": \"2026-02\", \"sales\": 13200000, \"orders\": 236, \"avg_order_value\": 55932.2},\n      {\"month\": \"2026-03\", \"sales\": 12800000, \"orders\": 229, \"avg_order_value\": 55895.63},\n      {\"month\": \"2026-04\", \"sales\": 15400000, \"orders\": 275, \"avg_order_value\": 56000},\n      {\"month\": \"2026-05\", \"sales\": 16100000, \"orders\": 288, \"avg_order_value\": 55902.78},\n      {\"month\": \"2026-06\", \"sales\": 14900000, \"orders\": 266, \"avg_order_value\": 55939.85},\n      {\"month\": \"2026-07\", \"sales\": 17300000, \"orders\": 309, \"avg_order_value\": 55954.37},\n      {\"month\": \"2026-08\", \"sales\": 18800000, \"orders\": 336, \"avg_order_value\": 55952.38},\n      {\"month\": \"2026-09\", \"sales\": 18100000, \"orders\": 323, \"avg_order_value\": 56037.15},\n      {\"month\": \"2026-10\", \"sales\": 20500000, \"orders\": 366, \"avg_order_value\": 56010.93},\n      {\"month\": \"2026-11\", \"sales\": 22400000, \"orders\": 400, \"avg_order_value\": 56000},\n      {\"month\": \"2026-12\", \"sales\": 23900000, \"orders\": 427, \"avg_order_value\": 55972.36}\n    ]\n  }\n}"
+  },
+  "parsed": {
+    "report": {
+      "summary": {
+        "total_sales": 185900000,
+        "total_orders": 3564,
+        "average_sales_per_month": 15491666.67,
+        "average_orders_per_month": 297,
+        "peak_sales_month": "2026-12",
+        "peak_sales_amount": 23900000,
+        "peak_orders_month": "2026-12",
+        "peak_orders_count": 427,
+        "lowest_sales_month": "2026-01",
+        "lowest_sales_amount": 12000000,
+        "lowest_orders_month": "2026-01",
+        "lowest_orders_count": 214
+      },
+      "monthly_performance": [
+        {
+          "month": "2026-01",
+          "sales": 12000000,
+          "orders": 214,
+          "avg_order_value": 55981.31
+        },
+        {
+          "month": "2026-02",
+          "sales": 13200000,
+          "orders": 236,
+          "avg_order_value": 55932.2
+        },
+        {
+          "month": "2026-03",
+          "sales": 12800000,
+          "orders": 229,
+          "avg_order_value": 55895.63
+        },
+        {
+          "month": "2026-04",
+          "sales": 15400000,
+          "orders": 275,
+          "avg_order_value": 56000
+        },
+        {
+          "month": "2026-05",
+          "sales": 16100000,
+          "orders": 288,
+          "avg_order_value": 55902.78
+        },
+        {
+          "month": "2026-06",
+          "sales": 14900000,
+          "orders": 266,
+          "avg_order_value": 55939.85
+        },
+        {
+          "month": "2026-07",
+          "sales": 17300000,
+          "orders": 309,
+          "avg_order_value": 55954.37
+        },
+        {
+          "month": "2026-08",
+          "sales": 18800000,
+          "orders": 336,
+          "avg_order_value": 55952.38
+        },
+        {
+          "month": "2026-09",
+          "sales": 18100000,
+          "orders": 323,
+          "avg_order_value": 56037.15
+        },
+        {
+          "month": "2026-10",
+          "sales": 20500000,
+          "orders": 366,
+          "avg_order_value": 56010.93
+        },
+        {
+          "month": "2026-11",
+          "sales": 22400000,
+          "orders": 400,
+          "avg_order_value": 56000
+        },
+        {
+          "month": "2026-12",
+          "sales": 23900000,
+          "orders": 427,
+          "avg_order_value": 55972.36
+        }
+      ]
+    }
+  },
+  "reference": {
+    "total_revenue": 205400000,
+    "best_month": "2026-12",
+    "worst_month": "2026-01"
+  }
+}

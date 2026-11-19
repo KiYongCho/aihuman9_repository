@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "mission": "meeting",
+    "version": "v1",
+    "model": "gpt-4.1-mini",
+    "created_utc": "2026-11-12T07:40:30.798769+00:00",
+    "score": 100.0,
+    "errors": "OK",
+    "seconds": 3.93,
+    "input_tokens": 234,
+    "output_tokens": 78,
+    "response_text": "{\"decisions\":[\"신규 안내 페이지 공개일을 다음 주 금요일로 결정\",\"김대리가 문구 검수 담당 맡음\"],\"tasks\":[{\"owner\":\"박주임\",\"task\":\"통계 페이지 오류 확인\",\"due\":\"다음 주 수요일\"}],\"risks\":[\"오류 복구 기한 미정으로 인한 일정 지연 가능성\"]}"
+  },
+  "parsed": {
+    "decisions": [
+      "신규 안내 페이지 공개일을 다음 주 금요일로 결정",
+      "김대리가 문구 검수 담당 맡음"
+    ],
+    "tasks": [
+      {
+        "owner": "박주임",
+        "task": "통계 페이지 오류 확인",
+        "due": "다음 주 수요일"
+      }
+    ],
+    "risks": [
+      "오류 복구 기한 미정으로 인한 일정 지연 가능성"
+    ]
+  },
+  "reference": null
+}

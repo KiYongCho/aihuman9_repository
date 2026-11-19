@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "mission": "career",
+    "version": "v2",
+    "model": "gpt-4.1-mini",
+    "created_utc": "2026-11-11T03:44:40.732881+00:00",
+    "score": 25.0,
+    "errors": "OK",
+    "seconds": 1.95,
+    "input_tokens": 253,
+    "output_tokens": 204,
+    "response_text": "{\n  \"key_skills\": [\"Python\", \"pandas\", \"SQL\", \"대시보드 구현 경험\", \"통계 기초\", \"협업 경험\"],\n  \"evidence\": [\n    \"Python과 pandas로 매출 CSV 집계 프로젝트 1건 수행\",\n    \"Streamlit으로 대시보드(화면) 구현 경험 있음\",\n    \"GitHub에서 코드 협업 경험 있음\",\n    \"SQL 조회 및 기본적인 REST API 호출 연습 경험 있음\"\n  ],\n  \"cover_letter\": \"저는 Python과 pandas를 활용해 매출 데이터 집계 프로젝트를 수행하였으며, Streamlit으로 대시보드를 구현한 경험이 있습니다. 또한 GitHub를 통한 협업으로 팀 프로젝트를 진행했으며, SQL 조회와 REST API 기초를 익혔습니다. 이러한 경험을 바탕으로 귀사의 데이터 분석 업무에 효과적으로 기여할 자신이 있습니다.\",\n  \"missing\": [\"통계 기초\"]\n}"
+  },
+  "parsed": {
+    "key_skills": [
+      "Python",
+      "pandas",
+      "SQL",
+      "대시보드 구현 경험",
+      "통계 기초",
+      "협업 경험"
+    ],
+    "evidence": [
+      "Python과 pandas로 매출 CSV 집계 프로젝트 1건 수행",
+      "Streamlit으로 대시보드(화면) 구현 경험 있음",
+      "GitHub에서 코드 협업 경험 있음",
+      "SQL 조회 및 기본적인 REST API 호출 연습 경험 있음"
+    ],
+    "cover_letter": "저는 Python과 pandas를 활용해 매출 데이터 집계 프로젝트를 수행하였으며, Streamlit으로 대시보드를 구현한 경험이 있습니다. 또한 GitHub를 통한 협업으로 팀 프로젝트를 진행했으며, SQL 조회와 REST API 기초를 익혔습니다. 이러한 경험을 바탕으로 귀사의 데이터 분석 업무에 효과적으로 기여할 자신이 있습니다.",
+    "missing": [
+      "통계 기초"
+    ]
+  },
+  "reference": null
+}

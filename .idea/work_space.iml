@@ -5,6 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/python/day7" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/webservice/day32" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/wsapi/day55" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/wsapi/day60" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
     </content>
     <orderEntry type="jdk" jdkName="D:\aihuman9\python\python.exe" jdkType="Python SDK" />

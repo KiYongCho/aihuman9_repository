@@ -1,0 +1,43 @@
+﻿mission,version,model,created_utc,score,errors,seconds,input_tokens,output_tokens,response_text
+sales,v1,gpt-4.1-mini,2026-11-11T03:44:24.462477+00:00,0,MISSING:best_month;MISSING:insights;MISSING:total_revenue;MISSING:worst_month;잘못된 total_revenue,5.52,302,573,"{
+  ""report"": {
+    ""summary"": {
+      ""total_sales"": 185900000,
+      ""total_orders"": 3564,
+      ""average_sales_per_month"": 15491666.67,
+      ""average_orders_per_month"": 297,
+      ""peak_sales_month"": ""2026-12"",
+      ""peak_sales_amount"": 23900000,
+      ""peak_orders_month"": ""2026-12"",
+      ""peak_orders_count"": 427,
+      ""lowest_sales_month"": ""2026-01"",
+      ""lowest_sales_amount"": 12000000,
+      ""lowest_orders_month"": ""2026-01"",
+      ""lowest_orders_count"": 214
+    },
+    ""monthly_performance"": [
+      {""month"": ""2026-01"", ""sales"": 12000000, ""orders"": 214, ""avg_order_value"": 55981.31},
+      {""month"": ""2026-02"", ""sales"": 13200000, ""orders"": 236, ""avg_order_value"": 55932.2},
+      {""month"": ""2026-03"", ""sales"": 12800000, ""orders"": 229, ""avg_order_value"": 55895.63},
+      {""month"": ""2026-04"", ""sales"": 15400000, ""orders"": 275, ""avg_order_value"": 56000},
+      {""month"": ""2026-05"", ""sales"": 16100000, ""orders"": 288, ""avg_order_value"": 55902.78},
+      {""month"": ""2026-06"", ""sales"": 14900000, ""orders"": 266, ""avg_order_value"": 55939.85},
+      {""month"": ""2026-07"", ""sales"": 17300000, ""orders"": 309, ""avg_order_value"": 55954.37},
+      {""month"": ""2026-08"", ""sales"": 18800000, ""orders"": 336, ""avg_order_value"": 55952.38},
+      {""month"": ""2026-09"", ""sales"": 18100000, ""orders"": 323, ""avg_order_value"": 56037.15},
+      {""month"": ""2026-10"", ""sales"": 20500000, ""orders"": 366, ""avg_order_value"": 56010.93},
+      {""month"": ""2026-11"", ""sales"": 22400000, ""orders"": 400, ""avg_order_value"": 56000},
+      {""month"": ""2026-12"", ""sales"": 23900000, ""orders"": 427, ""avg_order_value"": 55972.36}
+    ]
+  }
+}"
+sales,v2,gpt-4.1-mini,2026-11-11T03:44:26.406462+00:00,25.0,OK,1.94,357,173,"{
+  ""total_revenue"": 203400000,
+  ""best_month"": ""2026-12"",
+  ""worst_month"": ""2026-01"",
+  ""insights"": [
+    ""12월 매출은 2,390만원으로 1월의 1,200만원 대비 1,190만원 증가하여 연중 최고 매출 기록"",
+    ""11월부터 12월까지 매출이 2,240만원에서 2,390만원으로 150만원 상승, 주문 건수도 400건에서 427건으로 증가함"",
+    ""1월부터 2월까지 매출은 1,200만원에서 1,320만원으로 증가, 주문 건수도 214건에서 236건으로 증가하여 초기 상승세 관찰됨""
+  ]
+}"

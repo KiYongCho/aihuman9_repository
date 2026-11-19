@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "mission": "career",
+    "version": "v1",
+    "model": "gpt-4.1-mini",
+    "created_utc": "2026-11-11T03:44:38.780266+00:00",
+    "score": -75.0,
+    "errors": "MISSING:cover_letter;MISSING:evidence;MISSING:key_skills;MISSING:missing",
+    "seconds": 2.44,
+    "input_tokens": 200,
+    "output_tokens": 188,
+    "response_text": "{\n  \"자기소개서\": {\n    \"지원분야\": \"Python 데이터 분석 담당\",\n    \"주요역량\": [\n      \"Python과 pandas를 활용하여 매출 CSV 파일 집계 프로젝트 수행 경험\",\n      \"Streamlit을 사용한 대시보드 화면 구현 경험\",\n      \"GitHub를 통한 협업 경험으로 협업 역량 보유\",\n      \"SQL 조회 및 기본적인 REST API 호출 연습 경험\",\n      \"통계 기초 지식 보유\"\n    ],\n    \"강점\": \"실습 중심의 프로젝트 경험과 협업에 대한 이해를 바탕으로 Python 기반 데이터 분석 업무에 빠르게 적응하고 기여할 수 있습니다.\",\n    \"포부\": \"데이터 분석 기술과 협업 능력을 지속적으로 향상시켜 회사의 데이터 활용과 비즈니스 인사이트 도출에 기여하겠습니다.\"\n  }\n}"
+  },
+  "parsed": {
+    "자기소개서": {
+      "지원분야": "Python 데이터 분석 담당",
+      "주요역량": [
+        "Python과 pandas를 활용하여 매출 CSV 파일 집계 프로젝트 수행 경험",
+        "Streamlit을 사용한 대시보드 화면 구현 경험",
+        "GitHub를 통한 협업 경험으로 협업 역량 보유",
+        "SQL 조회 및 기본적인 REST API 호출 연습 경험",
+        "통계 기초 지식 보유"
+      ],
+      "강점": "실습 중심의 프로젝트 경험과 협업에 대한 이해를 바탕으로 Python 기반 데이터 분석 업무에 빠르게 적응하고 기여할 수 있습니다.",
+      "포부": "데이터 분석 기술과 협업 능력을 지속적으로 향상시켜 회사의 데이터 활용과 비즈니스 인사이트 도출에 기여하겠습니다."
+    }
+  },
+  "reference": null
+}

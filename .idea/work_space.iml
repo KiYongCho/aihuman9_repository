@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/wsapi/day55" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/wsapi/day60" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/work24_ai/.venv" />
     </content>
     <orderEntry type="jdk" jdkName="D:\aihuman9\python\python.exe" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
